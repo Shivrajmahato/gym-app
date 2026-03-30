@@ -39,7 +39,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install fastapi[all] sqlalchemy pydantic email-validator python-jose[cryptography] passlib[bcrypt] bcrypt python-multipart
+          pip install fastapi[all] sqlalchemy pydantic email-validator python-jose[cryptography] passlib[bcrypt] "bcrypt<4.0.0" python-multipart
       - name: Check code
         run: |
           python -m compileall .
@@ -60,7 +60,7 @@ jobs:
         working-directory: ./backend
         run: |
           python -m pip install --upgrade pip
-          pip install fastapi[all] sqlalchemy pydantic email-validator python-jose[cryptography] passlib[bcrypt] bcrypt python-multipart
+          pip install fastapi[all] sqlalchemy pydantic email-validator python-jose[cryptography] passlib[bcrypt] "bcrypt<4.0.0" python-multipart
           python seed_admin.py
           uvicorn main:app --port 8000 &
 
