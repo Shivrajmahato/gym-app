@@ -20,6 +20,7 @@ const Dashboard = () => {
         const res = await axios.get('http://127.0.0.1:8000/api/dashboard');
         setStats(res.data);
       } catch (e) {
+        console.error(e);
         console.log("Could not fetch stats, using mock");
         setStats({
           total_members: 248,

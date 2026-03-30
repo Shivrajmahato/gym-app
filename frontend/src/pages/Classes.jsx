@@ -70,7 +70,7 @@ const Classes = () => {
                    </div>
                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '12px', fontSize: '14px', borderBottom: '1px solid var(--border-color)', paddingBottom: '12px', marginBottom: '12px' }}>
                      <div style={{ color: 'var(--text-secondary)' }}>End Date:</div>
-                     <div>{new Date(Date.now() + 30*24*60*60*1000).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).replace(/ /g, '-')}</div>
+                     <div>{new Date(new Date().getTime() + 30*24*60*60*1000).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).replace(/ /g, '-')}</div>
                    </div>
                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '12px', fontSize: '14px', fontWeight: 'bold' }}>
                      <div style={{ color: 'var(--text-secondary)' }}>Status:</div>

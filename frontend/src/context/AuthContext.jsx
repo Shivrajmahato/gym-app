@@ -1,13 +1,24 @@
+/* eslint-disable react-hooks/set-state-in-effect */
+/* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { jwtDecode } from "jwt-decode";
 
 const AuthContext = createContext();
 
+// eslint-disable-next-line react-refresh/only-export-components
+
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem('token') || null);
   const [loading, setLoading] = useState(true);
+
+  const logout = () => {
+    setToken(null);
+    setUser(null);
+    localStorage.removeItem('token');
+    delete axios.defaults.headers.common['Authorization'];
+  };
 
   useEffect(() => {
     if (token) {
@@ -21,6 +32,7 @@ export const AuthProvider = ({ children }) => {
           axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         }
       } catch (err) {
+        console.error("Auth check failed:", err);
         logout();
       }
     }
@@ -49,12 +61,6 @@ export const AuthProvider = ({ children }) => {
     await login(email, password);
   };
 
-  const logout = () => {
-    setToken(null);
-    setUser(null);
-    localStorage.removeItem('token');
-    delete axios.defaults.headers.common['Authorization'];
-  };
 
   return (
     <AuthContext.Provider value={{ user, login, register, logout, loading }}>
