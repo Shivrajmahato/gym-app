@@ -1,19 +1,30 @@
-# FitManager - Gym Management Application
+# FitManager - Enterprise Gym Management Framework 🏋️‍♂️
 
-FitManager is a modern, full-stack gym management web application. It features a React frontend and a Python (FastAPI) backend. The application manages user authentication, gym memberships, and integrates a visually appealing user interface with role-based views for administrators and clients.
+FitManager is a full-stack, enterprise-grade gym management application. Featuring a modern, highly responsive React frontend and a powerful Python (FastAPI) backend. It is designed around robust software engineering practices, extending from core component building to comprehensive End-to-End (E2E) automation testing.
 
-## Features
-- **Frontend**: Built with React and Vite. Features a responsive, modern UI with curated color palettes and dynamic design elements.
-- **Backend**: Built with FastAPI, SQLAlchemy, and a local SQLite database.
-- **Authentication**: Secure JWT-based authentication with role-based access control.
-- **Dashboards**: Dedicated interfaces for Clients (viewing progress/bookings) and Administrators (managing members/stats).
+## System Architecture
 
-## Quick Start (Automated)
-If you have Node.js and Python installed on Windows:
-1. Double-click **`install.cmd`** in this folder to set up environments, install runtime dependencies, and seed the database.
-2. Run **`run.ps1`** (Right click -> Run with PowerShell) to launch both the frontend and backend servers simultaneously.
+* **Frontend:** React (Vite configuration), React Router DOM, strict ESLint enforcement, bespoke CSS with modern glassmorphism UI elements.
+* **Backend:** Python 3.11+, FastAPI, SQLAlchemy ORM, raw local SQLite storage.
+* **Security:** JWT-based authentication via Passlib (Bcrypt) and role-based access controls (RBAC) securely guarding backend endpoints and React routes.
+* **Quality Assurance:** Integrated Microsoft Playwright E2E testing framework measuring regressions via Module-Service-Flow design patterns.
+* **Continuous Integration:** GitHub Actions CI/CD pipelines configured for automated syntax linting, building, application spinning, and native Playwright artifact reporting. 
 
-For detailed manual installation steps, please read the included `running_guide.md`.
+## E2E Automation Testing 🤖
+We maintain extremely high code testing standards. 
+
+The application encompasses an independent E2E testing rig running **Playwright**:
+1. Navigate to the `e2e` folder.
+2. Run tests to evaluate workflows like login and registration password mismatch logic: `npm run test`
+3. View the generated professional metrics, error screenshots, and trace videos: `npm run report`
+
+*These tests automatically execute in our GitHub CI/CD pipeline upon every push, capturing and uploading HTML reports directly to the GitHub Action artifacts UI.*
+
+## Quick Start
+If you have Node.js and Python installed:
+1. Run **`install.cmd`** in this folder to install all dependencies and seed the local SQL database.
+2. Run **`run.ps1`** (Right click -> Run with PowerShell) to automatically deploy front/back web servers cleanly.
+3. Access the primary UI at `http://localhost:5173`. 
 
 ## Demo Accounts
 - **Admin**: `admin@fitmanager.com` / `admin`

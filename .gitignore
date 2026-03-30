@@ -24,3 +24,8 @@ Thumbs.db
 *.ntvs*
 *.njsproj
 *.sln
+
+# E2E Automation Framework
+e2e/node_modules/
+e2e/playwright-report/
+e2e/test-results/
