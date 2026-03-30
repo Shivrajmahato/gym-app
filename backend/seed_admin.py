@@ -2,10 +2,13 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-from database import SessionLocal
+from database import SessionLocal, engine
 import models, auth
 
 def seed_admin():
+    # Ensure database tables exist before querying (vital for fresh CI environments)
+    models.Base.metadata.create_all(bind=engine)
+    
     db = SessionLocal()
     # Seed admin user
     admin_email = "admin@fitmanager.com"
